@@ -33,7 +33,7 @@ element:(
     },
     {
       path : '/job/:id',
-      element: (<ProtectedRoute><Myjobs /></ProtectedRoute>) ,
+      element: (<ProtectedRoute><Job /></ProtectedRoute>) ,
      },
      {
       path : '/post-job',
