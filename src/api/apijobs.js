@@ -15,7 +15,6 @@ export async function getjobs({ searchQuery, company_id, location }) {
 if(company_id){
   query = query.eq('company_id',company_id)
 }
-  // Now await the result after the query has been fully constructed
   const { data, error } = await query;
 
   if (error) {
@@ -44,10 +43,7 @@ if(error) {
 }
 
 export async function updateHiringStatus(id , isopen) {
-  console.log('Is Open:', isopen); // Log isopen value
-  console.log('id', id)
   const job_id = +id
- // Try to update and then fetch the row
 const { data, error } = await supabase
 .from("jobs")
 .update({ isopen })
@@ -69,10 +65,23 @@ console.error("Error fetching updated data:", fetchError);
 return null;
 }
 
-console.log("Updated job data:", updatedData);
 return updatedData;
 
 }
 
 
 
+export async function addNewJob(_,jobData) {
+  console.log('jo',jobData)
+  const { data, error } = await supabase
+    .from("jobs")
+    .insert([jobData])
+    .select();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Error Creating Job");
+  }
+
+  return data;
+}

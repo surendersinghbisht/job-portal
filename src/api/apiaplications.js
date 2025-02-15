@@ -1,7 +1,8 @@
 import { supabase } from "@/utils/supabase";
 
 
-export async function applyToJob(jobData) {
+export async function applyToJob(_, jobData) {
+  console.log('apply',jobData)
     const supabaseUrl = import.meta.env.VITE_SUPABASE_URL 
     const random = Math.floor(Math.random()*90000)
    const fileName = `resume-${random}-${jobData.candidate_id}`;

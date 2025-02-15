@@ -33,9 +33,8 @@ const Job = () => {
       console.log('jobdata',jobData)
       setJob(jobData)
     }
-      console.log('job',job)
   }
-
+ 
   useEffect(() => {
     console.log('Job state updated:', job);  // Logs when job state changes
   }, [job]);  // This will run whenever job changes
@@ -105,7 +104,7 @@ const Job = () => {
         job = {job}
         user = {user}
         fetchJob = {fetchJob}
-        applied = {job?.applications?.find((ap)=> ap?.candidate_id === user_id )}
+        applied = {job?.applications?.find((ap)=> ap?.candidate_id === user.id )}
         />
       )}
     </div>
