@@ -6,7 +6,7 @@ import PostJobs from "./pages/post-jobs"
 import SavedJobs from "./pages/saved-jobs"
 import Myjobs from "./pages/my-jobs"
 import LandingPage from "./pages/landing-page"
-import OnBoarding from "./pages/OnBoarding"
+import Onboarding from "./pages/onBoarding"
 import { ThemeProvider } from "./components/theme-provider"
 import "./App.css";
 import ProtectedRoute from "./components/protected-route"
@@ -24,7 +24,7 @@ const router = createBrowserRouter([
     {
 path: 'onboarding',
 element:(
-<ProtectedRoute><OnBoarding /></ProtectedRoute>
+<ProtectedRoute><Onboarding /></ProtectedRoute>
 ) 
     },
    {
