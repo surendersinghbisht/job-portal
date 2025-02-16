@@ -72,7 +72,6 @@ return updatedData;
 
 
 export async function addNewJob(_,jobData) {
-  console.log('jo',jobData)
   const { data, error } = await supabase
     .from("jobs")
     .insert([jobData])
@@ -81,6 +80,35 @@ export async function addNewJob(_,jobData) {
   if (error) {
     console.error(error);
     throw new Error("Error Creating Job");
+  }
+
+  return data;
+}
+
+export async function getMyJobs({ recruiter_id }) {
+  const { data, error } = await supabase
+    .from("jobs")
+    .select("*, company: companies(name,logo_url)")
+    .eq("recruiter_id", recruiter_id);
+
+  if (error) {
+    console.error("Error fetching Jobs:", error);
+    return null;
+  }
+
+  return data;
+}
+
+export async function deleteJob({ job_id }) {
+  const { data, error: deleteError } = await supabase
+    .from("jobs")
+    .delete()
+    .eq("id", job_id)
+    .select();
+
+  if (deleteError) {
+    console.error("Error deleting job:", deleteError);
+    return data;
   }
 
   return data;

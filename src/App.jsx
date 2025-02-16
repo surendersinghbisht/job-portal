@@ -32,16 +32,16 @@ element:(
      element: (<ProtectedRoute><JobListing /></ProtectedRoute>) ,
     },
     {
+      path : '/my-jobs',
+      element: (<ProtectedRoute><Myjobs /></ProtectedRoute>) ,
+     },
+    {
       path : '/job/:id',
       element: (<ProtectedRoute><Job /></ProtectedRoute>) ,
      },
      {
       path : '/post-job',
       element:(<ProtectedRoute><PostJobs /></ProtectedRoute>) ,
-     },
-     {
-      path : '/saved-jobs',
-      element: (<ProtectedRoute><SavedJobs /></ProtectedRoute>) ,
      },
   ]
 }

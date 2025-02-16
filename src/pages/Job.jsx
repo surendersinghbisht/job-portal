@@ -19,7 +19,7 @@ const Job = () => {
   const [job, setJob] = useState(null)
 
   useEffect(() => {
-    // Only fetch the job if the user is loaded
+  
     if (isLoaded && user) {
    
       fetchJob()
@@ -30,7 +30,6 @@ const Job = () => {
   const fetchJob = async () => {
     const jobData = await getJob(id)
     if(jobData) {
-      console.log('jobdata',jobData)
       setJob(jobData)
     }
   }
