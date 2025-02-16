@@ -22,7 +22,7 @@ const router = createBrowserRouter([
       element: <LandingPage />
     },
     {
-path: 'onboarding',
+path: '/onboarding',
 element:(
 <ProtectedRoute><Onboarding /></ProtectedRoute>
 ) 

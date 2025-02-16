@@ -26,7 +26,7 @@ const Onboarding = () => {
 
   useEffect(() => {
     if (user?.unsafeMetadata?.role) {
-      navigateUser(user.unsafeMetadata.role);
+      navigateUser(user?.unsafeMetadata.role);
     }
   }, [user]);
 
