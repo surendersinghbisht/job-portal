@@ -1,7 +1,7 @@
 import { getcompanies } from '@/api/apicompanies';
 import { getjobs } from '@/api/apijobs'
 import JobCard from '@/components/jobCard';
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useState } from 'react';
 import { BarLoader } from 'react-spinners';
 import { Input } from '@/components/ui/input';

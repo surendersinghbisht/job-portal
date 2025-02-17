@@ -3,14 +3,15 @@ import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { BarLoader } from "react-spinners";
+import { useCallback } from "react";
 
 const Onboarding = () => {
   const { user, isLoaded } = useUser();
   const navigate = useNavigate();
 
-  const navigateUser = (currRole) => {
+  const navigateUser = useCallback((currRole) => {
     navigate(currRole === "recruiter" ? "/post-job" : "/jobs");
-  };
+  },[navigate]);
 
   const handleRoleSelection = async (role) => {
     await user
@@ -28,7 +29,7 @@ const Onboarding = () => {
     if (user?.unsafeMetadata?.role) {
       navigateUser(user?.unsafeMetadata.role);
     }
-  }, [user]);
+  }, [navigateUser, user]);
 
   if (!isLoaded) {
     return <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />;
