@@ -6,6 +6,9 @@ const ProtectedRoute = ({ children }) => {
   const { isSignedIn, isLoaded, user } = useUser();
   const { pathname } = useLocation();
 
+  console.log("isSignedIn:", isSignedIn);
+console.log("User Metadata:", user?.unsafeMetadata);
+
   // If user data isn't loaded yet, show a loading spinner or similar
   if (!isLoaded) {
     return <div>Loading...</div>; // Or a spinner

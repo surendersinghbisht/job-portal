@@ -14,16 +14,16 @@ const Onboarding = () => {
   },[navigate]);
 
   const handleRoleSelection = async (role) => {
-    await user
-      .update({ unsafeMetadata: { role } })
-      .then(() => {
-        console.log(`Role updated to: ${role}`);
-        navigateUser(role);
-      })
-      .catch((err) => {
-        console.error("Error updating role:", err);
-      });
+    try {
+      await user.update({ unsafeMetadata: { role } });
+      await user.reload(); // Force reload of user data
+      console.log("Updated Role:", user?.unsafeMetadata?.role);
+      navigateUser(role);
+    } catch (err) {
+      console.error("Error updating role:", err);
+    }
   };
+  
 
   useEffect(() => {
     if (user?.unsafeMetadata?.role) {
